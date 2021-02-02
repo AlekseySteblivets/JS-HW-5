@@ -101,12 +101,99 @@
 // 5-4-19Выполни рефакторинг функции-конструктора Car так, чтобы она принимала один параметр -
 //  объект со свойсвами brand, model и price. Деструктуризируй объект в сигнатуре (подписи) функции.
 
-function Car({brand, model, price}) {
-  this.brand = brand;
-  this.model = model;
-  this.price = price;
-}
+// function Car({brand, model, price}) {
+//   this.brand = brand;
+//   this.model = model;
+//   this.price = price;
+// }
 
-console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
-console.log(new Car({ brand: 'BMW', model: 'X5', price: 58900 }));
-console.log(new Car({ brand: 'Nissan', model: 'Murano', price: 31700 }));
+// console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
+// console.log(new Car({ brand: 'BMW', model: 'X5', price: 58900 }));
+// console.log(new Car({ brand: 'Nissan', model: 'Murano', price: 31700 }));
+
+
+
+//??? 5-5-19Добавь в свойство prototype функции-конструктора Car два метода:
+// getPrice() - возвращает значение свойства price из объекта который его будет вызывать.
+// changePrice(newPrice) - обновляет значение свойства price у объекта который его будет вызывать на newPrice.
+
+// function Car({ brand, model, price }) {
+//   this.brand = brand;
+//   this.model = model;
+//   this.price = price;
+  
+// }
+
+// Car.prototype.getPrice = function () {
+//   return this.price;
+// };
+
+// Car.prototype.changePrice = function(newPrice) {
+//   this.price = newPrice;
+// };
+
+// const audi = new Car({ brand: 'Audi', model: 'Q3', price: 36000 })
+
+// console.log(Car.prototype.hasOwnProperty('getPrice'));
+// console.log(Car.prototype.hasOwnProperty('changePrice'));
+// console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
+
+
+// console.log(audi);  
+// // - это же ссылка. почему внутри 36000, а не 35000? а в _proto_ 35000
+// console.log(audi.getPrice());
+// audi.changePrice(35000);
+// console.log(audi.getPrice());
+// console.log(audi);
+
+
+
+// 5-6-19Напиши функцию-конструктор Storage, которая будет создавать объекты для управления складом товаров.
+//  Функция ожидает только один аргумент - начальный массив товаров, который записывается на создаваемый объект в свойство items.
+
+// Добавь методы на прототип:
+// getItems() - возвращает массив текущих товаров в свойстве items объекта, который вызывает этот метод.
+// addItem(newItem) - принимает новый товар newItem и добавляет его в массив товаров в свойстве items объекта, который вызывает этот метод.
+// removeItem(item) - принимает товар item и удаляет его из массива товаров в свойстве items объекта, который вызывает этот метод.
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в тойпоследовательности, в которой твой код будут проверять тесты.
+//  Пожалуйста ничего там не меняй.
+
+function Storage(items) {
+  this.items = items;
+};
+
+Storage.prototype.getItems = function () {
+  return this.items;
+};
+
+Storage.prototype.addItem = function(newItem) {
+   this.items.push(newItem);
+};
+
+Storage.prototype.removeItem = function(item) {
+  this.items.splice(this.items.indexOf(item), 1);
+  // this.items.map(function(elem, index) {
+  //   if (elem === item) {
+  //     this.items.splice(index, 1);
+  //   }
+    
+  // });
+};
+
+
+
+// Пиши код выше этой строки
+const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
+
+
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+storage.addItem('Дроид');
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+storage.removeItem('Пролонгер');
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+
+Storage.prototype.hasOwnProperty('getItems');
+Storage.prototype.hasOwnProperty('addItem');
+Storage.prototype.hasOwnProperty('removeItem');
+new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ]);
+
