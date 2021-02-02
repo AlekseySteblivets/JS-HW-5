@@ -148,7 +148,7 @@
 
 
 
-// 5-6-19Напиши функцию-конструктор Storage, которая будет создавать объекты для управления складом товаров.
+// ???5-6-19Напиши функцию-конструктор Storage, которая будет создавать объекты для управления складом товаров.
 //  Функция ожидает только один аргумент - начальный массив товаров, который записывается на создаваемый объект в свойство items.
 
 // Добавь методы на прототип:
@@ -209,32 +209,41 @@
 // Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. 
 // Пожалуйста ничего там не меняй.
 
-function StringBuilder (baseValue) {
-  this.value = baseValue;
-}
-StringBuilder.prototype.getValue = function() {
-  return this.value;
-}
+// function StringBuilder (baseValue) {
+//   this.value = baseValue;
+// }
+// StringBuilder.prototype.getValue = function() {
+//   return this.value;
+// }
 
-StringBuilder.prototype.padEnd = function(str) {
-  return this.value += str;
-}
+// StringBuilder.prototype.padEnd = function(str) {
+//   return this.value += str;
+// }
 
-StringBuilder.prototype.padStart = function(str) {
-  return this.value = str + this.value; 
-}
+// StringBuilder.prototype.padStart = function(str) {
+//   return this.value = str + this.value; 
+// }
 
-StringBuilder.prototype.padBoth = function(str) {
-  return this.value = str + this.value + str;
-}
+// StringBuilder.prototype.padBoth = function(str) {
+//   return this.value = str + this.value + str;
+// }
 
 
-// Пиши код выше этой строки
-const builder = new StringBuilder('.');
-console.log(builder.getValue()); // '.'
-builder.padStart('^');
-console.log(builder.getValue()); // '^.'
-builder.padEnd('^');
-console.log(builder.getValue()); // '^.^'
-builder.padBoth('=');
-console.log(builder.getValue()); // '=^.^='
+// // Пиши код выше этой строки
+// const builder = new StringBuilder('.');
+// console.log(builder.getValue()); // '.'
+// builder.padStart('^');
+// console.log(builder.getValue()); // '^.'
+// builder.padEnd('^');
+// console.log(builder.getValue()); // '^.^'
+// builder.padBoth('=');
+// console.log(builder.getValue()); // '=^.^='
+
+
+
+// 5-8-19 (Пустое условие)
+// Используя ключевое слово class объяви класс Car с пустым телом.
+
+class Car {};
+console.log(Car);
+
