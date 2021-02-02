@@ -77,7 +77,7 @@
 // Функция Car должна создавать объект с одноимёнными свойствами brand, model и price,
 //  значениями которых должны быть переданные аргументы во время её вызова с оператором new.
 
-const Car = function (brand, model, price) {
+function Car (brand, model, price) {
   this.brand = brand;
   this.model = model;
   this.price = price;
