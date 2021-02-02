@@ -77,21 +77,36 @@
 // Функция Car должна создавать объект с одноимёнными свойствами brand, model и price,
 //  значениями которых должны быть переданные аргументы во время её вызова с оператором new.
 
-function Car (brand, model, price) {
+// function Car (brand, model, price) {
+//   this.brand = brand;
+//   this.model = model;
+//   this.price = price;
+// }
+
+
+// console.log(Car);
+// console.log(new Car('Audi', 'Q3', 36000));
+// console.log(new Car('BMW', 'X5', 58900));
+// console.log(new Car('Nissan', 'Murano', 31700));
+
+
+// //  функция была объявлена  вначале. А если бы я написал НАПРИМЕР: const Car = function (brand, model, price) {
+// //   this.brand = brand;
+// //   this.model = model;
+// //   this.price = price;}
+// //   это не то же самое? Когда как правильно писать?
+
+
+
+// 5-4-19Выполни рефакторинг функции-конструктора Car так, чтобы она принимала один параметр -
+//  объект со свойсвами brand, model и price. Деструктуризируй объект в сигнатуре (подписи) функции.
+
+function Car({brand, model, price}) {
   this.brand = brand;
   this.model = model;
   this.price = price;
 }
 
-
-console.log(Car);
-console.log(new Car('Audi', 'Q3', 36000));
-console.log(new Car('BMW', 'X5', 58900));
-console.log(new Car('Nissan', 'Murano', 31700));
-
-
-//  функция была объявлена  вначале. А если бы я написал НАПРИМЕР: const Car = function (brand, model, price) {
-//   this.brand = brand;
-//   this.model = model;
-//   this.price = price;}
-//   это не то же самое? Когда как правильно писать?
+console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
+console.log(new Car({ brand: 'BMW', model: 'X5', price: 58900 }));
+console.log(new Car({ brand: 'Nissan', model: 'Murano', price: 31700 }));
