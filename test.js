@@ -158,42 +158,83 @@
 // Под комментарием мы добавили инициализацию экземпляра и вызовы методов в тойпоследовательности, в которой твой код будут проверять тесты.
 //  Пожалуйста ничего там не меняй.
 
-function Storage(items) {
-  this.items = items;
-};
+// function Storage(items) {
+//   this.items = items;
+// };
 
-Storage.prototype.getItems = function () {
-  return this.items;
-};
+// Storage.prototype.getItems = function () {
+//   return this.items;
+// };
 
-Storage.prototype.addItem = function(newItem) {
-   this.items.push(newItem);
-};
+// Storage.prototype.addItem = function(newItem) {
+//    this.items.push(newItem);
+// };
 
-Storage.prototype.removeItem = function(item) {
-  this.items.splice(this.items.indexOf(item), 1);
-  // this.items.map(function(elem, index) {
-  //   if (elem === item) {
-  //     this.items.splice(index, 1);
-  //   }
+// Storage.prototype.removeItem = function(item) {
+//   this.items.splice(this.items.indexOf(item), 1);
+//   // this.items.map(function(elem, index) {
+//   //   if (elem === item) {
+//   //     this.items.splice(index, 1);
+//   //   }
     
-  // });
-};
+//   // });
+// };
 
+
+
+// // Пиши код выше этой строки
+// const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
+
+
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+// storage.addItem('Дроид');
+// console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+// storage.removeItem('Пролонгер');
+// console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+
+// Storage.prototype.hasOwnProperty('getItems');
+// Storage.prototype.hasOwnProperty('addItem');
+// Storage.prototype.hasOwnProperty('removeItem');
+// new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ]);
+
+
+
+// 5-7-19Напиши функцию-конструктор StringBuilder, которая принимает один параметр baseValue -
+//  произвольную строку, которая записывается на создаваемый объект в свойство value.
+// Добавь методы на прототип:
+// getValue() - возвращает текущее значение свойства value.
+// padEnd(str) - получает парметр str (строку) и добавляет её в конец значения свойства value объекта, который вызывает этот метод.
+// padStart(str) - получает парметр str (строку) и добавляет её в начало значения свойства value объекта, который вызывает этот метод.
+// padBoth(str) - получает парметр str (строку) и добавляет её в начало и в конец значения свойства value объекта, который вызывает этот метод.
+// Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. 
+// Пожалуйста ничего там не меняй.
+
+function StringBuilder (baseValue) {
+  this.value = baseValue;
+}
+StringBuilder.prototype.getValue = function() {
+  return this.value;
+}
+
+StringBuilder.prototype.padEnd = function(str) {
+  return this.value += str;
+}
+
+StringBuilder.prototype.padStart = function(str) {
+  return this.value = str + this.value; 
+}
+
+StringBuilder.prototype.padBoth = function(str) {
+  return this.value = str + this.value + str;
+}
 
 
 // Пиши код выше этой строки
-const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
-
-
-console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
-storage.addItem('Дроид');
-console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
-storage.removeItem('Пролонгер');
-console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
-
-Storage.prototype.hasOwnProperty('getItems');
-Storage.prototype.hasOwnProperty('addItem');
-Storage.prototype.hasOwnProperty('removeItem');
-new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ]);
-
+const builder = new StringBuilder('.');
+console.log(builder.getValue()); // '.'
+builder.padStart('^');
+console.log(builder.getValue()); // '^.'
+builder.padEnd('^');
+console.log(builder.getValue()); // '^.^'
+builder.padBoth('=');
+console.log(builder.getValue()); // '=^.^='
