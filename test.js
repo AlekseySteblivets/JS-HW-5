@@ -393,55 +393,97 @@
 // в которой твой код будут проверять тесты.
 // Пожалуйста ничего там не меняй.
 
-class StringBuilder {
-    #value;
-    constructor(baseValue) {
-        this.#value = baseValue;
-    }
-    getValue() {
-        return this.#value;
-    }
-    padEnd(str) {
-        this.#value += str;
-    }
-    padStart(str) {
-        this.#value = str + this.#value;
-    }
-    padBoth(str) {
-        this.padStart(str);
-        this.padEnd(str);
-    }
-}
-
-
-
-// function StringBuilder(baseValue) {
-//     this.value = baseValue;
+// class StringBuilder {
+//     #value;
+//     constructor(baseValue) {
+//         this.#value = baseValue;
+//     }
+//     getValue() {
+//         return this.#value;
+//     }
+//     padEnd(str) {
+//         this.#value += str;
+//     }
+//     padStart(str) {
+//         this.#value = str + this.#value;
+//     }
+//     padBoth(str) {
+//         this.padStart(str);
+//         this.padEnd(str);
+//     }
 // }
 
-// StringBuilder.prototype.getValue = function () {
-//     return this.value;
-// };
 
-// StringBuilder.prototype.padEnd = function (str) {
-//     this.value += str;
-// };
 
-// StringBuilder.prototype.padStart = function (str) {
-//     this.value = str + this.value;
-// };
+// // function StringBuilder(baseValue) {
+// //     this.value = baseValue;
+// // }
 
-// StringBuilder.prototype.padBoth = function (str) {
-//     this.padStart(str);
-//     this.padEnd(str);
-// };
+// // StringBuilder.prototype.getValue = function () {
+// //     return this.value;
+// // };
 
-// Пиши код выше этой строки
-const builder = new StringBuilder('.');
-console.log(builder.getValue()); // '.'
-builder.padStart('^');
-console.log(builder.getValue()); // '^.'
-builder.padEnd('^');
-console.log(builder.getValue()); // '^.^'
-builder.padBoth('=');
-console.log(builder.getValue()); // '=^.^='
+// // StringBuilder.prototype.padEnd = function (str) {
+// //     this.value += str;
+// // };
+
+// // StringBuilder.prototype.padStart = function (str) {
+// //     this.value = str + this.value;
+// // };
+
+// // StringBuilder.prototype.padBoth = function (str) {
+// //     this.padStart(str);
+// //     this.padEnd(str);
+// // };
+
+// // Пиши код выше этой строки
+// const builder = new StringBuilder('.');
+// console.log(builder.getValue()); // '.'
+// builder.padStart('^');
+// console.log(builder.getValue()); // '^.'
+// builder.padEnd('^');
+// console.log(builder.getValue()); // '^.^'
+// builder.padBoth('=');
+// console.log(builder.getValue()); // '=^.^='
+
+
+
+// 5-14-19Выполни рефакторинг класса Car. Сделай свойства model и price приватными, также как #brand. 
+// Стандартизируй публичный интерфейс класса заменив уже объявленные методы на геттеры и сеттеры brand,
+// model и price для взаимодействия с приватными свойствами.
+
+class Car {
+    #model;
+    #price;
+    #brand;
+
+    constructor({ brand, model, price }) {
+        this.#brand = brand;
+        this.#model = model;
+        this.#price = price;
+    }
+
+    get brand() {
+        return this.#brand;
+    }
+
+    set brand(newBrand) {
+        this.#brand = newBrand;
+    }
+
+    get model() {
+        return this.#model;
+    }
+
+    set model(newModel) {
+        this.#model = newModel;
+    }
+
+    get price() {
+        return this.#price;
+    }
+
+    set price(newPrice) {
+        this.#price = newPrice;
+    }
+}
