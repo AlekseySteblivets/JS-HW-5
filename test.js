@@ -77,7 +77,7 @@
 // Функция Car должна создавать объект с одноимёнными свойствами brand, model и price,
 //  значениями которых должны быть переданные аргументы во время её вызова с оператором new.
 
-// function Car (brand, model, price) {
+// const Car = function (brand, model, price) {
 //   this.brand = brand;
 //   this.model = model;
 //   this.price = price;
@@ -121,14 +121,14 @@
 //   this.brand = brand;
 //   this.model = model;
 //   this.price = price;
-  
+
 // }
 
 // Car.prototype.getPrice = function () {
 //   return this.price;
 // };
 
-// Car.prototype.changePrice = function(newPrice) {
+// Car.prototype.changePrice = function (newPrice) {
 //   this.price = newPrice;
 // };
 
@@ -139,7 +139,7 @@
 // console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
 
 
-// console.log(audi);  
+// console.log(audi);
 // // - это же ссылка. почему внутри 36000, а не 35000? а в _proto_ 35000
 // console.log(audi.getPrice());
 // audi.changePrice(35000);
@@ -166,23 +166,45 @@
 //   return this.items;
 // };
 
-// Storage.prototype.addItem = function(newItem) {
-//    this.items.push(newItem);
+// Storage.prototype.addItem = function (newItem) {
+//   this.items.push(newItem);
 // };
 
-// Storage.prototype.removeItem = function(item) {
-//   this.items.splice(this.items.indexOf(item), 1);
-//   // this.items.map(function(elem, index) {
-//   //   if (elem === item) {
-//   //     this.items.splice(index, 1);
-//   //   }
-    
-//   // });
+// Storage.prototype.removeItem = function (item) {
+//   var index = this.items.indexOf(item);
+//   if (index >= 0) {
+//     this.items.splice(index, 1);
+//   }
+
+// var indexOfItem = -1;
+// for (var index = 0; index < this.items.length - 1; index++) {
+//   if (this.items[index] === item) {
+//     indexOfItem = index;
+//     break;
+//   }
+// }
+
+// if (indexOfItem >= 0) {
+//   this.items.splice(indexOfItem, 1);
+// }
+
+// for (var index = 0; index < this.items.length - 1; index++) {
+//   if (this.items[index] === item) {
+//     this.items.splice(index, 1);
+//     break;
+//   }
+// }
+
+// this.items.map(function (elem, index) {
+//   if (elem === item) {
+//     this.items.splice(index, 1);
+//   }
+// }, this);
 // };
 
 
 
-// // Пиши код выше этой строки
+// Пиши код выше этой строки
 // const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
 
 
@@ -195,7 +217,7 @@
 // Storage.prototype.hasOwnProperty('getItems');
 // Storage.prototype.hasOwnProperty('addItem');
 // Storage.prototype.hasOwnProperty('removeItem');
-// new Storage([ 'Нанитоиды', 'Пролонгер', 'Антигравитатор' ]);
+// new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
 
 
 
@@ -244,6 +266,81 @@
 // 5-8-19 (Пустое условие)
 // Используя ключевое слово class объяви класс Car с пустым телом.
 
-class Car {};
-console.log(Car);
+// class Car {};
+// console.log(Car);
 
+
+
+// 5-9-19Выполни рефакторинг кода, заменив функцию-конструктор Car на класс с методом-конструктором, принимающим объект.
+// function Car({ brand, model, price }) {
+//   this.brand = brand;
+//   this.model = model;
+//   this.price = price;
+// }
+
+// class Car {
+//   constructor({ brand, model, price }) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.price = price;
+
+//   }
+// }
+// console.log(Car);
+
+
+
+// 5-10-19Добавь классу Car две метода.
+// getPrice() - возвращает значение свойства price из объекта который его будет вызывать.
+// changePrice(newPrice) - обновляет значение свойства price у объекта который
+// его будет вызывать на newPrice.
+
+// class Car {
+//   constructor({ brand, model, price }) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+//   getPrice() {
+//     return this.price
+//   }
+
+//   changePrice(newPrice) {
+//     return this.price = newPrice
+
+//   }
+// }
+
+// const audi = new Car({ brand: 'Audi', model: 'Q3', price: 36000 });
+
+// console.log(Car);
+// console.log(audi);
+// console.log(audi.getPrice());
+// console.log(audi.changePrice(800));
+// console.log(audi.getPrice())
+
+
+
+// 5-11-19Выполни рефакторинг класса Car так, чтобы свойство brand было приватным и 
+// добавь два метода для публичного интерфейса, для чтения и изменения этого свойства.
+// getBrand() - возвращает значение приватного свойства brand.
+// changeBrand(newBrand) - изменяет значение приватного свойства brand на newBrand.
+
+// class Car {
+//     #brand;
+//     constructor({ brand, model, price }) {
+//         this.#brand = brand;
+//         this.model = model;
+//         this.price = price;
+//     }
+
+//     getBrand() {
+//         return this.#brand;
+//     }
+
+//     changeBrand(newBrand) {
+//         return this.#brand = newBrand;
+//     }
+// }
+
+// console.log(Car);
