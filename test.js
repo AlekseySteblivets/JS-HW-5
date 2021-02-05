@@ -535,24 +535,60 @@
 // Под объявлением класса мы добавили инициализацию экземпляра и вызовы методов,
 // чтобы показать как будет использоваться метод checkPrice(price).
 
-class Car {
-    static #MAX_PRICE = 50000;
-    // Пиши код ниже этой строки
-    static checkPrice(price) {
-        if (price > Car.#MAX_PRICE) {
-            return 'Внимание! Цена превышает допустимую.';
-        }
-        return 'Всё хорошо, цена в порядке.';
+// class Car {
+//     static #MAX_PRICE = 50000;
+//     // Пиши код ниже этой строки
+//     static checkPrice(price) {
+//         if (price > Car.#MAX_PRICE) {
+//             return 'Внимание! Цена превышает допустимую.';
+//         }
+//         return 'Всё хорошо, цена в порядке.';
+//     }
+
+//     // Пиши код выше этой строки
+//     constructor({ price }) {
+//         this.price = price;
+//     }
+// }
+
+// const audi = new Car({ price: 36000 });
+// const bmw = new Car({ price: 64000 });
+
+// console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
+// console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.
+
+
+
+// 5-17-19
+// В приложении нужен администратор с возможностью добавлять почты пользователей в чёрный список.
+// Объяви класс Admin, который наследует от класса User.
+// Добавь классу Admin публичное статическое свойство AccessLevel(уровень доступа),
+// значение которого это объект { BASIC: 'basic', SUPERUSER: 'superuser' }.
+
+class User {
+    email;
+
+    constructor(email) {
+        this.email = email;
     }
 
-    // Пиши код выше этой строки
-    constructor({ price }) {
-        this.price = price;
+    get email() {
+        return this.email;
+    }
+
+    set email(newEmail) {
+        this.email = newEmail;
     }
 }
+// Пиши код ниже этой строки
 
-const audi = new Car({ price: 36000 });
-const bmw = new Car({ price: 64000 });
+class Admin extends User {
+    static AccessLevel = { BASIC: 'basic', SUPERUSER: 'superuser' };
+    constructor() {
+        super();
+    }
 
-console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
-console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.
+}
+
+console.log(Admin.AccessLevel);
+console.log(Admin);
